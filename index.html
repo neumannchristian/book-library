@@ -5,12 +5,24 @@
     <script src="script.js" defer></script>
   </head>
   <body>
+    <div id="modal">
+      <div id="AddToLibraryWrapper">
+        <span class="close">&times;</span>
+        <label for="titleInput">Title:</label>
+        <input id="titleInput" type="text">
+        <label for="authorInput">Author:</label>
+        <input id="authorInput" type="text">
+        <label for="totalPagesInput">Total Pages:</label>
+        <input id="totalPagesInput" type="text">
+        <button id="addToLibraryBtn">Add to Library</button>
+      </div>
+    </div>
     <div id="header">
       <div id="header-image"></div>
       <h1>Library</h1>
     </div>
     <div id="book-display">
-
+      <div id="book-openAddToLibraryModal">+</div>
     </div>
   </body>
 </html>
