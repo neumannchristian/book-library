@@ -47,7 +47,6 @@ addToLibraryBtn.addEventListener("click", function () {
     true
   );
   modal.style.display = "none";
-  resetBookDisplay();
   populateBookDisplay();
 });
 
@@ -75,33 +74,50 @@ addBookToLibraryArray(
 addBookToLibraryArray("The Constant Wife", "W. Somerset Maugham", 123, false);
 addBookToLibraryArray("It", "Stephen King", 128, false);
 
+function appendElement(target, element, text, cssClass) {
+  element.classList.add(cssClass);
+  element.textContent = text;
+  target.appendChild(element);
+}
+
 function addBookToBookDisplay(Book, i) {
   let bookCard = document.createElement("div");
   let bookCardTitle = document.createElement("div");
   let bookCardAuthor = document.createElement("div");
   let bookCardTotalPages = document.createElement("div");
   let bookCardHaveRead = document.createElement("div");
+  let bookCardRemoveBookBtn = document.createElement("button");
+
+  appendElement(bookCard, bookCardTitle, Book.title, "card-book-title");
+  appendElement(bookCard, bookCardAuthor, Book.author, "card-book-author");
+  appendElement(
+    bookCard,
+    bookCardTotalPages,
+    Book.totalPages,
+    "card-book-totalPages"
+  );
+  appendElement(
+    bookCard,
+    bookCardHaveRead,
+    Book.haveRead,
+    "card-book-haveRead"
+  );
+
+  appendElement(bookCard, bookCardRemoveBookBtn, "delete", "card-book-delete");
+
+  bookCardRemoveBookBtn.addEventListener("click", function (e) {
+    myLibrary.splice(e.target.parentNode.dataset.index, 1);
+    populateBookDisplay();
+  });
 
   bookCard.dataset.index = i;
   bookCard.classList.add("book-card");
 
-  bookCardTitle.classList.add("card-book-title");
-  bookCardTitle.textContent = Book.title;
-
-  bookCardAuthor.textContent = Book.author;
-
-  bookCardTotalPages.textContent = Book.totalPages;
-
-  bookCardHaveRead.textContent = Book.haveRead;
-
-  bookCard.appendChild(bookCardTitle);
-  bookCard.appendChild(bookCardAuthor);
-  bookCard.appendChild(bookCardTotalPages);
-  bookCard.appendChild(bookCardHaveRead);
   bookDisplay.appendChild(bookCard);
 }
 
 function populateBookDisplay() {
+  resetBookDisplay();
   myLibrary.forEach((e, i) => addBookToBookDisplay(e, i));
 }
 
