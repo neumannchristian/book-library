@@ -74,7 +74,7 @@ addBookToLibraryArray(
 addBookToLibraryArray("The Constant Wife", "W. Somerset Maugham", 123, false);
 addBookToLibraryArray("It", "Stephen King", 128, false);
 
-function appendElement(target, element, text, cssClass) {
+function appendElement(target, element, text, cssClass = "") {
   element.classList.add(cssClass);
   element.textContent = text;
   target.appendChild(element);
@@ -85,7 +85,12 @@ function addBookToBookDisplay(Book, i) {
   let bookCardTitle = document.createElement("div");
   let bookCardAuthor = document.createElement("div");
   let bookCardTotalPages = document.createElement("div");
-  let bookCardHaveRead = document.createElement("div");
+
+  let bookCardHaveReadLabel = document.createElement("label");
+  let bookCardHaveReadCheckbox = document.createElement("input");
+  bookCardHaveReadCheckbox.setAttribute("type", "checkbox");
+  let bookCardHaveReadSlider = document.createElement("span");
+
   let bookCardRemoveBookBtn = document.createElement("button");
 
   appendElement(bookCard, bookCardTitle, Book.title, "card-book-title");
@@ -98,10 +103,30 @@ function addBookToBookDisplay(Book, i) {
   );
   appendElement(
     bookCard,
-    bookCardHaveRead,
-    Book.haveRead,
-    "card-book-haveRead"
+    bookCardHaveReadLabel,
+    "",
+    "card-book-haveRead-label"
   );
+
+  appendElement(
+    bookCardHaveReadLabel,
+    bookCardHaveReadCheckbox,
+    "",
+    "card-book-haveRead-checkbox"
+  );
+
+  appendElement(
+    bookCardHaveReadLabel,
+    bookCardHaveReadSlider,
+    "",
+    "card-book-haveRead-slider"
+  );
+
+  syncBookCardCheckboxState();
+
+  bookCardHaveReadCheckbox.addEventListener("click", function (e) {
+    e.target.checked ? (Book.haveRead = true) : (Book.haveRead = false);
+  });
 
   appendElement(bookCard, bookCardRemoveBookBtn, "delete", "card-book-delete");
 
@@ -114,6 +139,12 @@ function addBookToBookDisplay(Book, i) {
   bookCard.classList.add("book-card");
 
   bookDisplay.appendChild(bookCard);
+
+  function syncBookCardCheckboxState() {
+    Book.haveRead
+      ? bookCardHaveReadCheckbox.setAttribute("checked", "")
+      : bookCardHaveReadCheckbox.removeAttribute("checked");
+  }
 }
 
 function populateBookDisplay() {
