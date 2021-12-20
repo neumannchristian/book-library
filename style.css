@@ -83,7 +83,12 @@ body {
 }
 
 #header-image {
-  width: 40%;
+  background-image: url("header.png");
+  background-size:contain;
+  background-repeat: no-repeat;
+  width:30%;
+  max-width: 719px;
+  height: auto;
 }
 
 h1 {
