@@ -93,8 +93,9 @@ body {
 }
 
 h1 {
-  background-color: #565656;
-  font-size: 8em;
+  margin-left:10%;
+  background-color: #56565686;
+  font-size: 7em;
   text-shadow: 2px 2px 3px rgba(255, 255, 255, 0.5);
   -webkit-background-clip: text;
   -moz-background-clip: text;
@@ -105,9 +106,9 @@ h1 {
 #book-display {
   padding: 0 10% 0 10%;
   display: grid;
-  grid-template-columns: repeat(4, 15%);
+  grid-template-columns: repeat(4, 20%);
   gap: 5%;
-  justify-items: center;
+  justify-content: center;
 }
 
 .book-card,
