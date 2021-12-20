@@ -82,9 +82,11 @@ function appendElement(target, element, text, cssClass = "") {
 
 function addBookToBookDisplay(Book, i) {
   let bookCard = document.createElement("div");
-  let bookCardTitle = document.createElement("div");
-  let bookCardAuthor = document.createElement("div");
-  let bookCardTotalPages = document.createElement("div");
+  let bookCardCover = document.createElement("div");
+  let bookCardFooter = document.createElement("div");
+  let bookCardTitle = document.createElement("p");
+  let bookCardAuthor = document.createElement("p");
+  let bookCardTotalPages = document.createElement("span");
 
   let bookCardHaveReadLabel = document.createElement("label");
   let bookCardHaveReadCheckbox = document.createElement("input");
@@ -93,46 +95,59 @@ function addBookToBookDisplay(Book, i) {
 
   let bookCardRemoveBookBtn = document.createElement("button");
 
-  appendElement(bookCard, bookCardTitle, Book.title, "card-book-title");
-  appendElement(bookCard, bookCardAuthor, Book.author, "card-book-author");
+  appendElement(bookCard, bookCardCover, "", "book-card-cover");
+
   appendElement(
-    bookCard,
-    bookCardTotalPages,
-    Book.totalPages,
-    "card-book-totalPages"
+    bookCardCover,
+    bookCardRemoveBookBtn,
+    "delete",
+    "book-card-delete"
   );
+
+  bookCardRemoveBookBtn.addEventListener("click", function (e) {
+    myLibrary.splice(e.target.parentNode.dataset.index, 1);
+    populateBookDisplay();
+  });
+
+  appendElement(bookCardCover, bookCardAuthor, Book.author, "book-card-author");
+  appendElement(bookCardCover, bookCardTitle, Book.title, "book-card-title");
+
+  // Footer
+
+  appendElement(bookCard, bookCardFooter, "", "book-card-footer");
+
   appendElement(
-    bookCard,
+    bookCardFooter,
     bookCardHaveReadLabel,
-    "",
-    "card-book-haveRead-label"
+    "read?",
+    "book-card-haveRead-label"
   );
 
   appendElement(
     bookCardHaveReadLabel,
     bookCardHaveReadCheckbox,
     "",
-    "card-book-haveRead-checkbox"
+    "book-card-haveRead-checkbox"
   );
 
   appendElement(
     bookCardHaveReadLabel,
     bookCardHaveReadSlider,
     "",
-    "card-book-haveRead-slider"
+    "book-card-haveRead-slider"
+  );
+
+  appendElement(
+    bookCardFooter,
+    bookCardTotalPages,
+    Book.totalPages,
+    "book-card-totalPages"
   );
 
   syncBookCardCheckboxState();
 
   bookCardHaveReadCheckbox.addEventListener("click", function (e) {
     e.target.checked ? (Book.haveRead = true) : (Book.haveRead = false);
-  });
-
-  appendElement(bookCard, bookCardRemoveBookBtn, "delete", "card-book-delete");
-
-  bookCardRemoveBookBtn.addEventListener("click", function (e) {
-    myLibrary.splice(e.target.parentNode.dataset.index, 1);
-    populateBookDisplay();
   });
 
   bookCard.dataset.index = i;

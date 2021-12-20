@@ -119,15 +119,33 @@ h1 {
   background-position-y: bottom;
 }
 
-.book-card,
+.book-card {
+  display: flex;
+  flex-direction: column;
+  height: 350px;
+}
+
+.book-card-cover,
 #book-openAddToLibraryModal {
   display: flex;
-  flex-direction: column-reverse;
+  flex-direction: column;
+  justify-content: flex-end;
   width: 100%;
-  height: 350px;
+  height: 90%;
   padding: 5%;
   background-color: var(--orange);
   border: 5px solid rgb(66, 66, 66);
+}
+
+.book-card-footer{
+  padding:3%;
+  display: flex;
+  justify-content: space-between;
+  color:var(--dark-grey);
+}
+
+.book-card-totalPages{
+
 }
 
 .style2 {
@@ -226,6 +244,7 @@ h1 {
   color: var(--dark-grey);
   display: grid;
   place-items: center;
+  justify-content: center;
   font-size: 10em;
   font-weight: 900;
 }
@@ -235,7 +254,7 @@ h1 {
   cursor: pointer;
 }
 
-.card-book-title {
+.book-card-title {
   font-size: 1.5em;
   font-weight: bold;
 }
