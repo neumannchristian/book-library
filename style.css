@@ -79,6 +79,7 @@ body {
 
 #header {
   height: 50%;
+  justify-content: center;
   display: flex;
 }
 
