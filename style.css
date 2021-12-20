@@ -69,11 +69,13 @@ h6 {
 }
 
 body {
-  background: rgb(228, 228, 228);
+  background: var(--light);
 }
 
 :root {
+  --light: rgb(247, 242, 236);
   --orange: #db6a2e;
+  --dark-grey: #494846;
   color: white;
 }
 
@@ -85,17 +87,17 @@ body {
 
 #header-image {
   background-image: url("header.png");
-  background-size:contain;
+  background-size: contain;
   background-repeat: no-repeat;
-  width:30%;
+  width: 30%;
   max-width: 719px;
   height: auto;
 }
 
 h1 {
-  margin-left:10%;
+  margin-left: 10%;
   background-color: #3a3a3ad2;
-  font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
   font-size: 7em;
   text-shadow: 2px 2px 3px rgba(255, 255, 255, 0.5);
   -webkit-background-clip: text;
@@ -126,6 +128,43 @@ h1 {
   padding: 5%;
   background-color: var(--orange);
   border: 5px solid rgb(66, 66, 66);
+}
+
+.style2 {
+  background-color: var(--dark-grey);
+}
+
+.style3 {
+  color: var(--dark-grey);
+  background: repeating-linear-gradient(
+      90deg,
+      transparent,
+      var(--dark-grey) 1%,
+      transparent 1%,
+      transparent 16%
+    ),
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      var(--dark-grey) 1%,
+      transparent 1%,
+      transparent 16%
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      var(--dark-grey) 1%,
+      transparent 1%,
+      transparent 15%
+    ),
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      var(--dark-grey) 1%,
+      transparent 1%,
+      transparent 18%
+    );
+  background-color: var(--light);
 }
 
 #modal {
@@ -182,10 +221,13 @@ h1 {
   box-shadow: 0.05em 0.05em;
 }
 
-#book-openAddToLibraryModal{
+#book-openAddToLibraryModal {
+  background-color: var(--light);
+  color: var(--dark-grey);
   display: grid;
   place-items: center;
-  font-size: 8em;
+  font-size: 10em;
+  font-weight: 900;
 }
 
 #book-openAddToLibraryModal:hover {
