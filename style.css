@@ -94,7 +94,8 @@ body {
 
 h1 {
   margin-left:10%;
-  background-color: #56565686;
+  background-color: #3a3a3ad2;
+  font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   font-size: 7em;
   text-shadow: 2px 2px 3px rgba(255, 255, 255, 0.5);
   -webkit-background-clip: text;
@@ -104,11 +105,16 @@ h1 {
 }
 
 #book-display {
-  padding: 0 10% 0 10%;
+  padding: 0 10% 10% 10%;
   display: grid;
   grid-template-columns: repeat(4, 20%);
   gap: 5%;
   justify-content: center;
+  background-image: url("grid-bg.png");
+  background-size: 20%;
+  background-repeat: no-repeat;
+  background-position-x: 90%;
+  background-position-y: bottom;
 }
 
 .book-card,
