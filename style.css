@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Exo+2:wght@800&display=swap");
+
 /*
   1. Use a more-intuitive box-sizing model.
 */
@@ -80,30 +82,52 @@ body {
 }
 
 #header {
-  height: 50%;
   justify-content: center;
-  display: flex;
+  height: 40%;
+  grid-template-columns: 30% 40%;
+  display: grid;
+  margin-bottom: 8%;
 }
 
 #header-image {
   background-image: url("header.png");
   background-size: contain;
   background-repeat: no-repeat;
-  width: 30%;
-  max-width: 719px;
-  height: auto;
+  width: 100%;
+}
+
+#title {
+  display: block;
 }
 
 h1 {
-  margin-left: 10%;
-  background-color: #3a3a3ad2;
-  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
-  font-size: 7em;
-  text-shadow: 2px 2px 3px rgba(255, 255, 255, 0.5);
+  display: inline-block;
+  position: relative;
+  color: var(--dark-grey);
+  margin-left: 0%;
+  font-family: "Exo 2", Impact, Haettenschweiler, "Arial Narrow Bold",
+    sans-serif;
+  font-size: 10em;
+  text-shadow: 0.03em 0.03em 0 var(--light);
+}
+
+h1::after {
+  content: attr(data-shadow);
+  position: absolute;
+  top: 4%;
+  left: 2%;
+  z-index: -1;
+  text-shadow: none;
+  background-image: linear-gradient(
+    45deg,
+    transparent 45%,
+    var(--dark-grey) 45%,
+    var(--dark-grey) 55%,
+    transparent 0
+  );
+  background-size: 0.05em 0.05em;
   -webkit-background-clip: text;
-  -moz-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  -webkit-text-fill-color: transparent;
 }
 
 #book-display {
@@ -122,11 +146,12 @@ h1 {
 .book-card {
   display: flex;
   flex-direction: column;
-  height: 350px;
+  height: 25em;
 }
 
 .book-card-cover,
 #book-openAddToLibraryModal {
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -135,17 +160,76 @@ h1 {
   padding: 5%;
   background-color: var(--orange);
   border: 5px solid rgb(66, 66, 66);
+  border-radius: 95px 5px 225px 15px/15px 225px 15px 5px;
+  box-shadow: rgba(209, 209, 209, 0.4) 5px 5px,
+    rgba(209, 209, 209, 0.3) 10px 10px;
 }
 
-.book-card-footer{
-  padding:3%;
+#book-openAddToLibraryModal {
+  background-color: var(--light);
+  color: var(--dark-grey);
+  display: grid;
+  place-items: center;
+  justify-content: center;
+  font-size: 10em;
+  font-weight: 900;
+}
+
+#book-openAddToLibraryModal:hover {
+  background-color: #fa7934;
+  cursor: pointer;
+}
+
+/* .book-card-cover::before,
+#book-openAddToLibraryModal::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 3%;
+  left: 6%;
+  z-index: -1;
+  background-image: repeating-linear-gradient(
+    45deg,
+    var(--dark-grey) 1px,
+    transparent 2px,
+    transparent 6px
+  );
+  background-size: 7px 7px;
+} */
+
+.book-card-cover::after,
+#book-openAddToLibraryModal::after {
+  content: "";
+  position: absolute;
+  width: 104%;
+  height: 103%;
+  top: 0;
+  left: 0;
+  z-index: -2;
+  background-color: rgba(187, 187, 187, 0.733);
+  border: rgb(66, 66, 66) solid 4px;
+  border-radius: 95px 5px 225px 400px/15px 225px 15px 5px;
+  -webkit-clip-path: polygon(
+    0 98%,
+    5% 100%,
+    100% 100%,
+    100% 2%,
+    98% 0,
+    9% 0,
+    0 9%
+  );
+  clip-path: polygon(0 98%, 5% 100%, 100% 100%, 100% 2%, 98% 0, 9% 0, 0 9%);
+}
+
+.book-card-footer {
+  padding: 7% 5%;
   display: flex;
   justify-content: space-between;
-  color:var(--dark-grey);
+  color: var(--dark-grey);
 }
 
-.book-card-totalPages{
-
+.book-card-totalPages {
 }
 
 .style2 {
@@ -237,21 +321,6 @@ h1 {
 #AddToLibraryWrapper button:active {
   transform: translate(0.05em, 0.05em);
   box-shadow: 0.05em 0.05em;
-}
-
-#book-openAddToLibraryModal {
-  background-color: var(--light);
-  color: var(--dark-grey);
-  display: grid;
-  place-items: center;
-  justify-content: center;
-  font-size: 10em;
-  font-weight: 900;
-}
-
-#book-openAddToLibraryModal:hover {
-  background-color: #fa7934;
-  cursor: pointer;
 }
 
 .book-card-title {
