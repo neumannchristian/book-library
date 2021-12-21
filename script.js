@@ -73,6 +73,7 @@ addBookToLibraryArray(
 );
 addBookToLibraryArray("The Constant Wife", "W. Somerset Maugham", 123, false);
 addBookToLibraryArray("It", "Stephen King", 128, false);
+addBookToLibraryArray("The Hitchhiker's Guide to the Galaxy", "Douglas Adams", 528, false);
 
 function appendElement(target, element, text, cssClass = "") {
   element.classList.add(cssClass);
