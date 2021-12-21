@@ -93,16 +93,18 @@ function addBookToBookDisplay(Book, i) {
   bookCardHaveReadCheckbox.setAttribute("type", "checkbox");
   let bookCardHaveReadSlider = document.createElement("span");
 
-  let bookCardRemoveBookBtn = document.createElement("button");
+  let bookCardRemoveBookBtn = document.createElement("span");
 
   appendElement(bookCard, bookCardCover, "", "book-card-cover");
 
   appendElement(
     bookCardCover,
     bookCardRemoveBookBtn,
-    "delete",
+    "",
     "book-card-delete"
   );
+
+  bookCardRemoveBookBtn.insertAdjacentHTML('afterbegin','&times;')
 
   bookCardRemoveBookBtn.addEventListener("click", function (e) {
     myLibrary.splice(e.target.parentNode.dataset.index, 1);

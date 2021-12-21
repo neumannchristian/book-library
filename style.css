@@ -222,6 +222,21 @@ h1::after {
   clip-path: polygon(0 98%, 5% 100%, 100% 100%, 100% 2%, 98% 0, 9% 0, 0 9%);
 }
 
+.book-card-title {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+.book-card-delete{
+  position: absolute;
+  top: 0;
+  display: inline-block;
+  align-self: flex-end;
+  font-weight: 900;
+  font-size: 2em;
+  cursor:pointer;
+}
+
 .book-card-footer {
   padding: 7% 5%;
   display: flex;
@@ -323,7 +338,4 @@ h1::after {
   box-shadow: 0.05em 0.05em;
 }
 
-.book-card-title {
-  font-size: 1.5em;
-  font-weight: bold;
-}
+
