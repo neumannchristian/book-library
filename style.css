@@ -72,6 +72,8 @@ h6 {
 
 body {
   background: var(--light);
+  font-family: "Exo 2", Impact, Haettenschweiler, "Arial Narrow Bold",
+    sans-serif;
 }
 
 :root {
@@ -105,8 +107,6 @@ h1 {
   position: relative;
   color: var(--dark-grey);
   margin-left: 0%;
-  font-family: "Exo 2", Impact, Haettenschweiler, "Arial Narrow Bold",
-    sans-serif;
   font-size: 10em;
   text-shadow: 0.03em 0.03em 0 var(--light);
 }
