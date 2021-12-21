@@ -78,7 +78,7 @@ body {
 
 :root {
   --light: rgb(247, 242, 236);
-  --orange: #db6a2e;
+  --orange: #F7941D;
   --dark-grey: #494846;
   color: white;
 }
@@ -227,14 +227,21 @@ h1::after {
   font-weight: bold;
 }
 
-.book-card-delete{
+.book-card-delete {
   position: absolute;
-  top: 0;
+  top: -0.3em;
   display: inline-block;
   align-self: flex-end;
   font-weight: 900;
-  font-size: 2em;
-  cursor:pointer;
+  font-size: 3em;
+  cursor: pointer;
+
+
+  /* -webkit-text-stroke-width: 2px;
+  -moz-text-stroke-width: 2px;
+  -webkit-text-stroke-color: #111827;
+  -moz-text-stroke-color: #111827;
+  color: transparent; */
 }
 
 .book-card-footer {
@@ -337,5 +344,3 @@ h1::after {
   transform: translate(0.05em, 0.05em);
   box-shadow: 0.05em 0.05em;
 }
-
-
