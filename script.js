@@ -13,21 +13,21 @@ const addToLibraryBtn = document.querySelector("#addToLibraryBtn");
 
 let myLibrary = [];
 
-function Book(title, author, totalPages, haveRead) {
+function Book(title, author, totalPages, finished) {
   this.title = title;
   this.author = author;
   this.totalPages = totalPages;
-  this.haveRead = haveRead;
+  this.finished = finished;
 }
 
 Book.prototype.info = function () {
   return `${title} by ${author}, ${pages} pages, ${
-    haveRead ? "already read" : "not read yet"
+    finished ? "already read" : "not read yet"
   }`;
 };
 
-function addBookToLibraryArray(title, author, pages, haveRead) {
-  let newBook = new Book(title, author, pages, haveRead);
+function addBookToLibraryArray(title, author, pages, finished) {
+  let newBook = new Book(title, author, pages, finished);
   myLibrary.push(newBook);
 }
 
@@ -89,10 +89,10 @@ function addBookToBookDisplay(Book, i) {
   let bookCardAuthor = document.createElement("p");
   let bookCardTotalPages = document.createElement("span");
 
-  let bookCardHaveReadLabel = document.createElement("label");
-  let bookCardHaveReadCheckbox = document.createElement("input");
-  bookCardHaveReadCheckbox.setAttribute("type", "checkbox");
-  let bookCardHaveReadSlider = document.createElement("span");
+  let bookCardFinishedLabel = document.createElement("label");
+  let bookCardFinishedCheckbox = document.createElement("input");
+  bookCardFinishedCheckbox.setAttribute("type", "checkbox");
+  let bookCardFinishedSlider = document.createElement("span");
 
   let bookCardRemoveBookBtn = document.createElement("span");
 
@@ -121,23 +121,23 @@ function addBookToBookDisplay(Book, i) {
 
   appendElement(
     bookCardFooter,
-    bookCardHaveReadLabel,
+    bookCardFinishedLabel,
     "read?",
-    "book-card-haveRead-label"
+    "book-card-finished-label"
   );
 
   appendElement(
-    bookCardHaveReadLabel,
-    bookCardHaveReadCheckbox,
+    bookCardFinishedLabel,
+    bookCardFinishedCheckbox,
     "",
-    "book-card-haveRead-checkbox"
+    "book-card-finished-checkbox"
   );
 
   appendElement(
-    bookCardHaveReadLabel,
-    bookCardHaveReadSlider,
+    bookCardFinishedLabel,
+    bookCardFinishedSlider,
     "",
-    "book-card-haveRead-slider"
+    "book-card-finished-slider"
   );
 
   appendElement(
@@ -149,8 +149,8 @@ function addBookToBookDisplay(Book, i) {
 
   syncBookCardCheckboxState();
 
-  bookCardHaveReadCheckbox.addEventListener("click", function (e) {
-    e.target.checked ? (Book.haveRead = true) : (Book.haveRead = false);
+  bookCardFinishedCheckbox.addEventListener("click", function (e) {
+    e.target.checked ? (Book.finished = true) : (Book.finished = false);
   });
 
   bookCard.dataset.index = i;
@@ -159,9 +159,9 @@ function addBookToBookDisplay(Book, i) {
   bookDisplay.appendChild(bookCard);
 
   function syncBookCardCheckboxState() {
-    Book.haveRead
-      ? bookCardHaveReadCheckbox.setAttribute("checked", "")
-      : bookCardHaveReadCheckbox.removeAttribute("checked");
+    Book.finished
+      ? bookCardFinishedCheckbox.setAttribute("checked", "")
+      : bookCardFinishedCheckbox.removeAttribute("checked");
   }
 }
 
