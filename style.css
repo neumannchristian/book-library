@@ -78,7 +78,7 @@ body {
 
 :root {
   --light: rgb(247, 242, 236);
-  --orange: #F7941D;
+  --orange: #f7941d;
   --dark-grey: #494846;
   color: white;
 }
@@ -160,17 +160,31 @@ h1::after {
   padding: 5%;
   background-color: var(--orange);
   border: 5px solid rgb(66, 66, 66);
-  border-radius: 95px 5px 225px 15px/15px 225px 15px 5px;
-  box-shadow: rgba(209, 209, 209, 0.4) 5px 5px,
-    rgba(209, 209, 209, 0.3) 10px 10px;
+  border-radius: 70px 5px 20px 2px/15px 225px 5px 15px;
+  box-shadow: rgba(209, 209, 209, 0.6) 2px 2px,
+    rgba(209, 209, 209, 0.7) 3px 3px,
+    rgba(209, 209, 209, 0.8) 4px 4px,
+    rgba(110, 110, 110, 0.2) 5px 5px,
+    rgba(209, 209, 209, 0.5) 7px 7px,
+    rgba(121, 121, 121, 0.5) 8px 8px,
+    rgba(209, 209, 209, 0.6) 9px 9px,
+    rgba(17, 17, 17, 0.7) 11px 11px;
+  transition: ease-out 0.1s;
+}
+
+.book-card-cover:hover,
+#book-openAddToLibraryModal:hover {
+  border-radius: 70px 5px 225px 2px/15px 155px 15px 15px;
+  width: 99%;
+  padding-right: 4%;
 }
 
 #book-openAddToLibraryModal {
   background-color: var(--light);
   color: var(--dark-grey);
-  display: grid;
-  place-items: center;
+  display: flex;
   justify-content: center;
+  align-items: center;
   font-size: 10em;
   font-weight: 900;
 }
@@ -180,47 +194,45 @@ h1::after {
   cursor: pointer;
 }
 
-/* .book-card-cover::before,
+.book-card-cover::before,
 #book-openAddToLibraryModal::before {
   content: "";
+  display: block;
+  justify-self: flex-start;
+  align-self: flex-start;
   position: absolute;
+  transform:rotateZ(-45deg) skewY(45deg);
+  background-color: transparent;
+  border-left: rgb(66, 66, 66) solid 2px;
+  width: 70%;
+  height: 5%;
+  bottom: -17px;
+  margin-left: 10%;
+  z-index: 1;
+}
+
+/* .book-card-cover::after,
+#book-openAddToLibraryModal::after {
+  display: none;
+  content: "";
+  position: absolute;
+  transform: scaleY(45deg);
   width: 100%;
-  height: 100%;
+  height: 103%;
   top: 3%;
-  left: 6%;
+  left: 5%;
   z-index: -1;
+  background-color: rgba(187, 187, 187, 0.733);
   background-image: repeating-linear-gradient(
     45deg,
     var(--dark-grey) 1px,
     transparent 2px,
     transparent 6px
   );
-  background-size: 7px 7px;
-} */
-
-.book-card-cover::after,
-#book-openAddToLibraryModal::after {
-  content: "";
-  position: absolute;
-  width: 104%;
-  height: 103%;
-  top: 0;
-  left: 0;
-  z-index: -2;
-  background-color: rgba(187, 187, 187, 0.733);
   border: rgb(66, 66, 66) solid 4px;
-  border-radius: 95px 5px 225px 400px/15px 225px 15px 5px;
-  -webkit-clip-path: polygon(
-    0 98%,
-    5% 100%,
-    100% 100%,
-    100% 2%,
-    98% 0,
-    9% 0,
-    0 9%
-  );
-  clip-path: polygon(0 98%, 5% 100%, 100% 100%, 100% 2%, 98% 0, 9% 0, 0 9%);
-}
+  border-left:rgba(187, 187, 187, 0.733);
+  border-radius: 95px 5px 2px 4px/15px 225px 15px 5px;
+} */
 
 .book-card-title {
   font-size: 1.5em;
@@ -235,8 +247,6 @@ h1::after {
   font-weight: 900;
   font-size: 3em;
   cursor: pointer;
-
-
   /* -webkit-text-stroke-width: 2px;
   -moz-text-stroke-width: 2px;
   -webkit-text-stroke-color: #111827;
@@ -296,7 +306,7 @@ h1::after {
   place-items: center;
 
   background-color: rgba(0, 0, 0, 0.699);
-  z-index: 1;
+  z-index: 2;
   width: 100%;
   height: 100%;
   top: 0;
