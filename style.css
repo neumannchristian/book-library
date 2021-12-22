@@ -301,11 +301,11 @@ h1::after {
 .book-card-totalPages {
 }
 
-.style2 {
+.book-card:nth-child(2n+3) .book-card-cover{
   background-color: var(--dark-grey);
 }
 
-.style3 {
+.book-card:nth-child(3n+4) .book-card-cover {
   color: var(--dark-grey);
   background: repeating-linear-gradient(
       90deg,
