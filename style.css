@@ -83,8 +83,8 @@ body {
   color: white;
 }
 
-@keyframes spin { 
-  100% { 
+@keyframes spin {
+  100% {
     transform: rotateZ(360deg);
   }
 }
@@ -167,29 +167,16 @@ h1::after {
   background-color: var(--orange);
   border: 5px solid rgb(66, 66, 66);
   border-radius: 70px 5px 20px 2px/15px 225px 5px 15px;
-  box-shadow: 
-    rgba(209, 209, 209, 1) 4px 1px,
-    rgba(209, 209, 209, 1) 5px 2px,
-    rgb(148, 148, 148) 6px 3px,
-    rgb(148, 148, 148) 7px 4px,
-    rgba(209, 209, 209, 1) 8px 5px,
-    rgba(209, 209, 209, 1) 9px 6px,
-    rgb(148, 148, 148) 10px 7px,
-    rgba(209, 209, 209, 1) 11px 8px,
-    rgba(209, 209, 209, 1) 12px 9px,
-    var(--dark-grey) -1px 1px,
-    var(--dark-grey) 2px 2px,
-    var(--dark-grey) 3px 3px,
-    var(--dark-grey) 4px 4px,
-    var(--dark-grey) 5px 5px,
-    var(--dark-grey) 6px 6px,
-    var(--dark-grey) 7px 7px,
-    var(--dark-grey) 8px 9px,
-    var(--dark-grey) 9px 10px,
-    var(--dark-grey) 10px 11px,
-    var(--dark-grey) 11px 12px,
-    var(--dark-grey) 13px 13px,
-    var(--dark-grey) 14px 13px;
+  box-shadow: rgba(209, 209, 209, 1) 4px 1px, rgba(209, 209, 209, 1) 5px 2px,
+    rgb(189, 189, 189) 6px 3px, rgb(189, 189, 189) 7px 4px,
+    rgba(209, 209, 209, 1) 8px 5px, rgba(209, 209, 209, 1) 9px 6px,
+    rgb(189, 189, 189) 10px 7px, rgba(209, 209, 209, 1) 11px 8px,
+    rgba(209, 209, 209, 1) 12px 9px, var(--dark-grey) -1px 1px,
+    var(--dark-grey) 2px 2px, var(--dark-grey) 3px 3px, var(--dark-grey) 4px 4px,
+    var(--dark-grey) 5px 5px, var(--dark-grey) 6px 6px, var(--dark-grey) 7px 7px,
+    var(--dark-grey) 8px 9px, var(--dark-grey) 9px 10px,
+    var(--dark-grey) 10px 11px, var(--dark-grey) 11px 12px,
+    var(--dark-grey) 13px 13px, var(--dark-grey) 14px 13px;
   transition: ease-out 0.1s;
 }
 
@@ -275,22 +262,32 @@ h1::after {
   font-weight: 900;
   font-size: 3em;
   cursor: pointer;
-  border:transparent dashed 0.09em;
   border-radius: 50%;
   transition: linear;
+  z-index: 5;
   /* -webkit-text-stroke-width: 2px;
   -moz-text-stroke-width: 2px;
   -webkit-text-stroke-color: #111827;
   -moz-text-stroke-color: #111827;
   color: transparent; */
 }
+.book-card-delete::after {
+  content: "";
+  position: inherit;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  border: transparent dashed 3px;
+  border-radius: 50%;
+  z-index: -1;
+}
 
-.book-card-delete:hover {
-  border-color:black;
+.book-card-delete:hover::after {
+  border-color: black;
   animation: spin 10s linear infinite;
 }
 
-.book-card-cover:hover .book-card-delete{
+.book-card-cover:hover .book-card-delete {
   display: flex;
 }
 
