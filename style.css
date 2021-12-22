@@ -83,6 +83,12 @@ body {
   color: white;
 }
 
+@keyframes spin { 
+  100% { 
+    transform: rotateZ(360deg);
+  }
+}
+
 #header {
   justify-content: center;
   height: 40%;
@@ -161,14 +167,29 @@ h1::after {
   background-color: var(--orange);
   border: 5px solid rgb(66, 66, 66);
   border-radius: 70px 5px 20px 2px/15px 225px 5px 15px;
-  box-shadow: rgba(209, 209, 209, 0.6) 2px 2px,
-    rgba(209, 209, 209, 0.7) 3px 3px,
-    rgba(209, 209, 209, 0.8) 4px 4px,
-    rgba(110, 110, 110, 0.2) 5px 5px,
-    rgba(209, 209, 209, 0.5) 7px 7px,
-    rgba(121, 121, 121, 0.5) 8px 8px,
-    rgba(209, 209, 209, 0.6) 9px 9px,
-    rgba(17, 17, 17, 0.7) 11px 11px;
+  box-shadow: 
+    rgba(209, 209, 209, 1) 4px 1px,
+    rgba(209, 209, 209, 1) 5px 2px,
+    rgb(148, 148, 148) 6px 3px,
+    rgb(148, 148, 148) 7px 4px,
+    rgba(209, 209, 209, 1) 8px 5px,
+    rgba(209, 209, 209, 1) 9px 6px,
+    rgb(148, 148, 148) 10px 7px,
+    rgba(209, 209, 209, 1) 11px 8px,
+    rgba(209, 209, 209, 1) 12px 9px,
+    var(--dark-grey) -1px 1px,
+    var(--dark-grey) 2px 2px,
+    var(--dark-grey) 3px 3px,
+    var(--dark-grey) 4px 4px,
+    var(--dark-grey) 5px 5px,
+    var(--dark-grey) 6px 6px,
+    var(--dark-grey) 7px 7px,
+    var(--dark-grey) 8px 9px,
+    var(--dark-grey) 9px 10px,
+    var(--dark-grey) 10px 11px,
+    var(--dark-grey) 11px 12px,
+    var(--dark-grey) 13px 13px,
+    var(--dark-grey) 14px 13px;
   transition: ease-out 0.1s;
 }
 
@@ -194,7 +215,7 @@ h1::after {
   cursor: pointer;
 }
 
-.book-card-cover::before,
+/* .book-card-cover::before,
 #book-openAddToLibraryModal::before {
   content: "";
   display: block;
@@ -209,7 +230,7 @@ h1::after {
   bottom: -17px;
   margin-left: 10%;
   z-index: 1;
-}
+} */
 
 /* .book-card-cover::after,
 #book-openAddToLibraryModal::after {
@@ -241,17 +262,36 @@ h1::after {
 
 .book-card-delete {
   position: absolute;
-  top: -0.3em;
-  display: inline-block;
+  padding: 0.35em;
+  padding-bottom: 0.5em;
+  top: 0.15em;
+  height: 1em;
+  width: 1em;
+  display: none;
   align-self: flex-end;
+  justify-content: center;
+  align-items: center;
+  place-items: center;
   font-weight: 900;
   font-size: 3em;
   cursor: pointer;
+  border:transparent dashed 0.09em;
+  border-radius: 50%;
+  transition: linear;
   /* -webkit-text-stroke-width: 2px;
   -moz-text-stroke-width: 2px;
   -webkit-text-stroke-color: #111827;
   -moz-text-stroke-color: #111827;
   color: transparent; */
+}
+
+.book-card-delete:hover {
+  border-color:black;
+  animation: spin 10s linear infinite;
+}
+
+.book-card-cover:hover .book-card-delete{
+  display: flex;
 }
 
 .book-card-footer {
