@@ -73,7 +73,12 @@ addBookToLibraryArray(
 );
 addBookToLibraryArray("The Constant Wife", "W. Somerset Maugham", 123, false);
 addBookToLibraryArray("It", "Stephen King", 128, false);
-addBookToLibraryArray("The Hitchhiker's Guide to the Galaxy", "Douglas Adams", 528, false);
+addBookToLibraryArray(
+  "The Hitchhiker's Guide to the Galaxy",
+  "Douglas Adams",
+  528,
+  false
+);
 
 function appendElement(target, element, text, cssClass = "") {
   element.classList.add(cssClass);
@@ -83,6 +88,7 @@ function appendElement(target, element, text, cssClass = "") {
 
 function addBookToBookDisplay(Book, i) {
   let bookCard = document.createElement("div");
+  let bookCardCoverWrapper = document.createElement("div"); //required for clearing z-index stack
   let bookCardCover = document.createElement("div");
   let bookCardFooter = document.createElement("div");
   let bookCardTitle = document.createElement("p");
@@ -96,16 +102,13 @@ function addBookToBookDisplay(Book, i) {
 
   let bookCardRemoveBookBtn = document.createElement("span");
 
-  appendElement(bookCard, bookCardCover, "", "book-card-cover");
 
-  appendElement(
-    bookCardCover,
-    bookCardRemoveBookBtn,
-    "",
-    "book-card-delete"
-  );
+  appendElement(bookCard, bookCardCoverWrapper, "", "book-card-cover-wrapper");
+  appendElement(bookCardCoverWrapper, bookCardCover, "", "book-card-cover");
 
-  bookCardRemoveBookBtn.insertAdjacentHTML('afterbegin','&times;')
+  appendElement(bookCardCover, bookCardRemoveBookBtn, "", "book-card-delete");
+
+  bookCardRemoveBookBtn.insertAdjacentHTML("afterbegin", "&times;");
 
   bookCardRemoveBookBtn.addEventListener("click", function (e) {
     myLibrary.splice(e.target.parentNode.dataset.index, 1);
