@@ -262,7 +262,7 @@ h1::after {
   border-radius: 70px 5px 20px 2px/15px 225px 5px 15px;
   box-shadow: var(--dark-grey) 6px 17px,var(--dark-grey) 20px 14px,var(--dark-grey) 20px 16px,
   var(--dark-grey) 21px 17px,
-  rgba(0, 0, 0, 0.158) 21px 17px 20px;
+  rgba(0, 0, 0, 0.158) 21px 17px 16px;
 }
 
 .book-card-cover-wrapper:hover .book-card-cover::after{
