@@ -13,12 +13,17 @@ const addToLibraryBtn = document.querySelector("#addToLibraryBtn");
 
 let myLibrary = [];
 
-function Book(title, author, totalPages, finished) {
+function Book(title, author, totalPages, currentPage, finished) {
   this.title = title;
   this.author = author;
   this.totalPages = totalPages;
+  this.currentPage = currentPage;
   this.finished = finished;
 }
+
+Book.prototype.evalFinished = function () {
+  return (this.finished = this.currentPage == this.totalPages ? true : false);
+};
 
 Book.prototype.info = function () {
   return `${title} by ${author}, ${pages} pages, ${
@@ -26,8 +31,8 @@ Book.prototype.info = function () {
   }`;
 };
 
-function addBookToLibraryArray(title, author, pages, finished) {
-  let newBook = new Book(title, author, pages, finished);
+function addBookToLibraryArray(title, author, pages, currentPage, finished) {
+  let newBook = new Book(title, author, pages, currentPage, finished);
   myLibrary.push(newBook);
 }
 
@@ -63,20 +68,28 @@ function resetBookDisplay() {
   }
 }
 
-addBookToLibraryArray("The Hobbit", "J.R.R. Tolkien", 295, true);
-addBookToLibraryArray("Die Verwandlung", "Franz Kafka", 212, true);
+addBookToLibraryArray("The Hobbit", "J.R.R. Tolkien", 295, 240, true);
+addBookToLibraryArray("Die Verwandlung", "Franz Kafka", 212, 211, true);
 addBookToLibraryArray(
   "The Sun Also Rises",
   "Ernest Miller Hemingway",
   224,
+  0,
   false
 );
-addBookToLibraryArray("The Constant Wife", "W. Somerset Maugham", 123, false);
-addBookToLibraryArray("It", "Stephen King", 128, false);
+addBookToLibraryArray(
+  "The Constant Wife",
+  "W. Somerset Maugham",
+  123,
+  0,
+  false
+);
+addBookToLibraryArray("It", "Stephen King", 128, 12, false);
 addBookToLibraryArray(
   "The Hitchhiker's Guide to the Galaxy",
   "Douglas Adams",
   528,
+  0,
   false
 );
 
@@ -100,8 +113,10 @@ function addBookToBookDisplay(Book, i) {
   bookCardFinishedCheckbox.setAttribute("type", "checkbox");
   let bookCardFinishedSlider = document.createElement("span");
 
-  let bookCardRemoveBookBtn = document.createElement("span");
+  let bookCardReadingProgressWrapper = document.createElement("div");
+  let bookCardReadingProgressInput = document.createElement("input");
 
+  let bookCardRemoveBookBtn = document.createElement("span");
 
   appendElement(bookCard, bookCardCoverWrapper, "", "book-card-cover-wrapper");
   appendElement(bookCardCoverWrapper, bookCardCover, "", "book-card-cover");
@@ -121,6 +136,32 @@ function addBookToBookDisplay(Book, i) {
   // Footer
 
   appendElement(bookCard, bookCardFooter, "", "book-card-footer");
+
+  // Reading Progress Slider
+
+  appendElement(
+    bookCardFooter,
+    bookCardReadingProgressWrapper,
+    "",
+    "book-card-reading-progress-wrapper"
+  );
+  appendElement(
+    bookCardReadingProgressWrapper,
+    bookCardReadingProgressInput,
+    "",
+    "book-card-reading-progress-input"
+  );
+
+  bookCardReadingProgressInput.type = "range";
+  bookCardReadingProgressInput.min = 0;
+  bookCardReadingProgressInput.max = Book.totalPages ? Book.totalPages : 100;
+  bookCardReadingProgressInput.value = Book.currentPage ? Book.currentPage : 0;
+
+  bookCardReadingProgressInput.oninput = function(e) {
+    Book.currentPage = e.target.value;
+  };
+
+  // Finished Reading Checkbox
 
   appendElement(
     bookCardFooter,
